@@ -1,21 +1,44 @@
 const express = require('express');
 const chalk = require('chalk');
 const morgan = require('morgan');
+const app = express();
+// require a mongoose
+const mongoose = require('mongoose');
 
+require("dotenv").config();
 const PORT = process.env.PORT || 3000;
 
-const app = express();
+
+const databaseUrl = process.env.DATABASEURL;
+const database = process.env.DATABASENAME;
+// const databaseUrl = "mongodb+srv://Martin:marvilmongo@cluster0-b7hwb.mongodb.net/CRUD-Review-CJ?retryWrites=true&w=majority";
+// const database = "CRUD-Review-CJ";
+
+// const databaseUrl = 'mongodb+srv://Martin:marvilmongo@cluster0-b7hwb.mongodb.net/treatment-api?retryWrites=true&w=majority';
+// const database = "treatment-api";
 
 //import api routes
 const api = require('./src/routes/api');
 
+
+
 //express version
 console.log("**Express Version: ", require('express/package').version);
+
+//setup mongoose and mongoDB
+mongoose
+    .connect(databaseUrl, { dbName: database, useNewUrlParser: true, useUnifiedTopology: true })
+    .then(() => {
+        console.log("Connection is successful");
+    })
+    .catch((err) => console.error(err));
 
 //middleware
 app.use(morgan('combined'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+
 
 //json format
 app.set('json spaces', 2)

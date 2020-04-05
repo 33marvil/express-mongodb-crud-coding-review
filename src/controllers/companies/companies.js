@@ -1,35 +1,31 @@
-const controllers = {
+const mongoose = require('mongoose');
+
+
+const Company = require('../../models/Company');
+console.log(Company, 'out company');
+
+const controller = {
     index: (req, res) => {
-    	Company
-    	  .exec()
-    	  .then(data => {
-    	  	res
-    	  	  .json({
-    	  	  		type: 'Reading companies',
-    	  	  		data: data
-    	  	  })
-    	  	  	.status(200);
-    	  })
-    	  .catch(err => {
-    	  	  	console.log(`caugth error: ${err}`);
-    	  	  	return res.status(500).json(err);
-    	  });
-    },
+        console.log("inside index");
+        Company
+            .find()
+            .exec()
+            .then((data) => {
+                res
+                    .json({
+                        type: "Reading data",
+                        data: data,
+                    })
+                    .status(200);
+            })
+            .catch((err) => {
+                console.log(`caugth error: ${err}`);
+                return res.status(500).json(err);
+            });
+    }
+
+}
 
 
-    create: (req, res) => {
 
-
-    },
-
-
-    delete: (request, response) => {
-  
-    },
-
-    update: (request, response) => {
- 
-    }       
-
-};
-
+module.exports = controller;
