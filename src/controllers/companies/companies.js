@@ -64,6 +64,23 @@ const controller = {
                 console.log(`caugth error: ${err}`);
                 return res.status(404).json(err);
             })
+    },
+    update: (req, res) => {
+        console.log(Company, "inside update")
+        Company
+            .findByIdAndUpdate(req.params.id, { $set: req.body }, { useFindAndModify: false }) // warning 
+            .then(data => {
+                res
+                    .json({
+                        type: 'User found Update',
+                        data: data
+                    })
+                    .status(200)
+            })
+            .catch(err => {
+                console.log(`caugth error: ${err}`);
+                return res.status(500).json(err);
+            })
     }
 
 }

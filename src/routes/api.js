@@ -18,6 +18,8 @@ app.post('/companies', Companies.create);
 // Endpoint companies GET BY ID 2 -- IS created Branch Number 2
 app.get('/companies/:id', Companies.findById);
 
+// Endpoint companies PUT
+app.put('/companies/:id', Companies.update);
 
 
 
