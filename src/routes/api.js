@@ -8,12 +8,15 @@ const app = Router();
 const Companies = require('../controllers/companies/companies');
 console.log(Companies, "this companies");
 
-//companies GET
+// Endpoint companies GET
 app.get('/companies', Companies.index);
 
 
-// companies POST
+// Endpoint companies POST
 app.post('/companies', Companies.create);
+
+// Endpoint companies GET BY ID 2 -- IS created Branch Number 2
+app.get('/companies/:id', Companies.findById);
 
 
 
