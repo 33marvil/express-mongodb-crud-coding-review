@@ -72,7 +72,24 @@ const controller = {
             .then(data => {
                 res
                     .json({
-                        type: 'User found Update',
+                        type: 'Company found Update',
+                        data: data
+                    })
+                    .status(200)
+            })
+            .catch(err => {
+                console.log(`caugth error: ${err}`);
+                return res.status(500).json(err);
+            })
+    },
+    delete: (req, res) => {
+        console.log(Company, "inside delete")
+        Company
+            .findOneAndDelete(req.params.id, { $set: req.body })
+            .then(data => {
+                res
+                    .json({
+                        type: 'Company found Deleted',
                         data: data
                     })
                     .status(200)

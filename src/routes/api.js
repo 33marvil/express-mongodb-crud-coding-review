@@ -21,6 +21,9 @@ app.get('/companies/:id', Companies.findById);
 // Endpoint companies PUT
 app.put('/companies/:id', Companies.update);
 
+// Endpoint companies DELETE Companies + CompanyId
+app.delete('/companies/:id', Companies.delete);
 
 
+module.exports = app;
 module.exports = app;
