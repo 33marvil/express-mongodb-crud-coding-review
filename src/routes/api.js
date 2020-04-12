@@ -8,6 +8,9 @@ const app = Router();
 const Companies = require('../controllers/companies/companies');
 console.log(Companies, "this companies");
 
+const Jobs = require('../controllers/jobs/jobs');
+console.log(Jobs, "this jobs");
+
 // Endpoint companies GET
 app.get('/companies', Companies.index);
 
@@ -24,6 +27,8 @@ app.put('/companies/:id', Companies.update);
 // Endpoint companies DELETE Companies + CompanyId
 app.delete('/companies/:id', Companies.delete);
 
+// Endpoint jobs GET
+app.get('/jobs', Jobs.index);
 
-module.exports = app;
+
 module.exports = app;
