@@ -66,7 +66,25 @@ const controller = {
                 return res.status(404).json(err);
             })
 
+    },
+    update: (req, res) => {
+        // console.log("inside update jobs");
+        Job
+            .findByIdAndUpdate(req.params.id, { $set: req.body })
+            .then(data => {
+                res
+                    .json({
+                        type: 'Job found Update',
+                        data: data
+                    })
+                    .status(200)
+            })
+            .catch(err => {
+                console.log(`caugth error: ${err}`);
+                return res.status(500).json(err);
+            })
     }
+
 }
 
 

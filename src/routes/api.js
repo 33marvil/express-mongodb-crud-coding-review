@@ -36,5 +36,8 @@ app.post('/jobs', Jobs.create);
 // Endpoint jobs GET BY Id
 app.get('/jobs/:id', Jobs.findById);
 
+// Endpoint jobs PUT update
+app.put('/jobs/:id', Jobs.update);
+
 
 module.exports = app;
