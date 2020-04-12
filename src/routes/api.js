@@ -30,5 +30,8 @@ app.delete('/companies/:id', Companies.delete);
 // Endpoint jobs GET
 app.get('/jobs', Jobs.index);
 
+// Endpoint jobs POST
+app.post('/jobs', Jobs.create);
+
 
 module.exports = app;
