@@ -48,6 +48,23 @@ const controller = {
                 console.log(`caugth error: ${err}`);
                 return res.status(500).json(err);
             })
+    },
+    findById: (req, res) => {
+        // console.log("inside findById")
+        Job
+            .findById(req.params.id)
+            .then(data => {
+                res
+                    .json({
+                        type: 'Companies Found',
+                        data: data
+                    })
+                    .status(200)
+            })
+            .catch(err => {
+                console.log(`caugth error: ${err}`);
+                return res.status(404).json(err);
+            })
 
     }
 }

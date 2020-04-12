@@ -33,5 +33,8 @@ app.get('/jobs', Jobs.index);
 // Endpoint jobs POST
 app.post('/jobs', Jobs.create);
 
+// Endpoint jobs GET BY Id
+app.get('/jobs/:id', Jobs.findById);
+
 
 module.exports = app;
