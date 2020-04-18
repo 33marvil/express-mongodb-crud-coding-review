@@ -69,9 +69,12 @@ const controller = {
     },
     update: (req, res) => {
         // console.log("inside update jobs");
+        console.log(req.body, "inside req body")
+
         Job
-            .findByIdAndUpdate(req.params.id, { $set: req.body })
-            .then(data => {
+            .findByIdAndUpdate(req.params.id, { $set: req.body }, { useFindAndModify: false })
+
+        .then(data => {
                 res
                     .json({
                         type: 'Job found Update',
