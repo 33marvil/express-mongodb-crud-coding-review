@@ -39,5 +39,8 @@ app.get('/jobs/:id', Jobs.findById);
 // Endpoint jobs PUT update
 app.put('/jobs/:id', Jobs.update);
 
+// Endpoint DELETE /api/jobs` + jobId
+app.delete('/jobs/:id', Jobs.delete);
+
 
 module.exports = app;

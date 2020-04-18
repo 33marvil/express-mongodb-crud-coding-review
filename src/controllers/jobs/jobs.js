@@ -69,7 +69,7 @@ const controller = {
     },
     update: (req, res) => {
         // console.log("inside update jobs");
-        console.log(req.body, "inside req body")
+        // console.log(req.body, "inside req body")
 
         Job
             .findByIdAndUpdate(req.params.id, { $set: req.body }, { useFindAndModify: false })
@@ -86,9 +86,25 @@ const controller = {
                 console.log(`caugth error: ${err}`);
                 return res.status(500).json(err);
             })
+    },
+    delete: (req, res) => {
+        console.log(Job, "inside req delete");
+        Job
+            .findOneAndDelete(req.params.id, { $set: req.body })
+            .then(data => {
+                res
+                    .json({
+                        type: 'Jobs found Deleted',
+                        data: data
+                    })
+                    .status(200)
+            })
+            .catch(err => {
+                console.log(`caugth error: ${err}`);
+                return res.status(500).json(err);
+            })
     }
 
 }
-
 
 module.exports = controller;
